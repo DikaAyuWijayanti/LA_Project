@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Welcome Pasar Sayur Blitar</title>
+    <title>Selamat Datang di Batik Ciprat Langitan Simbatan</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('adminassets') }}/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{ asset('adminassets') }}/assets/vendors/css/vendor.bundle.base.css">
@@ -26,9 +26,9 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo">
-                <h1><strong> Welcome Pasar Sayur Blitar </strong></h1>
+                <h1><strong> Selamat Datang di Batik Ciprat Langitan Simbatan </strong></h1>
                 </div>
-                <h5>Hallo! Welcome to Pasar Sayur Blitar</h5>
+                <h5>Hallo! Selamat Datang di Batik Ciprat Langitan Simbatan</h5>
                 <h6 class="font-weight-light">Silahkan login terlebih dahulu untuk melanjutkan</h6>
                 <form class="pt-3" method="POST" action="{{ route('login') }}">
                   @csrf
