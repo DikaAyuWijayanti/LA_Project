@@ -37,7 +37,7 @@ class CheckoutController extends Controller
         $alamat_user = DB::table('alamat')
         ->join('cities','cities.city_id','=','alamat.cities_id')
         ->join('provinces','provinces.province_id','=','cities.province_id')
-        ->select('alamat.*','cities.title as kota','provinces.title as prov')
+        ->select('alamat.*','cities.nama_cities as kota','provinces.title as prov')
         ->where('alamat.user_id',$id_user)
         ->first();    
         

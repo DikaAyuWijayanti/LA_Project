@@ -19,6 +19,10 @@ Route::get('/produk','user\ProdukController@index')->name('user.produk');
 Route::get('/produk/cari','user\ProdukController@cari')->name('user.produk.cari');
 Route::get('/kategori/{id}','KategoriController@produkByKategori')->name('user.kategori');
 Route::get('/produk/{id}','user\ProdukController@detail')->name('user.produk.detail');
+Route::get('/ongkir', 'CheckOngkirController@index');
+Route::post('/ongkir', 'CheckOngkirController@check_ongkir');
+Route::get('/cities/{province_id}', 'CheckOngkirController@getCities');
+
 
 Route::get('/pelanggan',function(){
     return 'Pelanggan';
@@ -45,6 +49,8 @@ Route::group(['middleware' => ['auth','checkRole:admin']],function(){
     Route::get('/admin/product/edit/{id}','admin\ProductController@edit')->name('admin.product.edit');
     Route::get('/admin/product/delete/{id}','admin\ProductController@delete')->name('admin.product.delete');
     Route::post('/admin/product/update/{id}','admin\ProductController@update')->name('admin.product.update');
+
+    Route::get('/admin/pelanggan','admin\PelangganController@index')->name('admin.pelanggan');
 });
 
 Route::group(['middleware' => ['auth','checkRole:customer']],function(){
@@ -67,3 +73,4 @@ Route::group(['middleware' => ['auth','checkRole:customer']],function(){
     Route::get('/order/pembayaran/{id}','user\OrderController@pembayaran')->name('user.order.pembayaran');
     Route::post('/order/kirimbukti/{id}','user\OrderController@kirimbukti')->name('user.order.kirimbukti');
 });
+

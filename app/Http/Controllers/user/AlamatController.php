@@ -24,7 +24,7 @@ class AlamatController extends Controller
             $data['alamat'] = DB::table('alamat')
             ->join('cities','cities.city_id','=','alamat.cities_id')
             ->join('provinces','provinces.province_id','=','cities.province_id')
-            ->select('provinces.title as prov','cities.title as kota','alamat.*')
+            ->select('provinces.nama_province as prov','cities.nama_cities as kota','alamat.*')
             ->where('alamat.user_id',$id_user)
             ->get();
             return view('user.alamatada',$data);               

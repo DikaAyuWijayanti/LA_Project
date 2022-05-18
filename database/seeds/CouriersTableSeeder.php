@@ -12,9 +12,9 @@ class CouriersTableSeeder extends Seeder
     public function run()
     {
         $data = [
-            ['code' => 'jne','title' => 'JNE'],
-            ['code' => 'pos','title' => 'POS'],
-            ['code' => 'tiki','title' => 'TIKI'],
+            ['code' => 'jne','nama_couriers' => 'JNE'],
+            ['code' => 'pos','nama_courierse' => 'POS'],
+            ['code' => 'tiki','nama_couriers' => 'TIKI'],
         ];
         Courier::insert($data);
     }

@@ -11,7 +11,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $data = ['name' => 'admin','email' => 'admin@gmail.com','password' => bcrypt('rahasia'),'role' => 'admin'];
+        $data = ['name' => 'admin','email' => 'admin@gmail.com','password' => bcrypt('swpbtk'),'role' => 'admin'];
         User::insert($data);
     }
 }
