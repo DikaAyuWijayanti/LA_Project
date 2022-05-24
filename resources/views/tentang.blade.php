@@ -7,8 +7,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
     <link rel="stylesheet" href="{{ asset('shopper') }}/fonts/icomoon/style.css">
-    
-    <!-- Bootstrap core CSS -->
+
     <link rel="stylesheet" href="{{ asset('shopper') }}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('shopper') }}/css/magnific-popup.css">
     <link rel="stylesheet" href="{{ asset('shopper') }}/css/jquery-ui.css">
@@ -129,6 +128,13 @@
             <li class="{{ Request::path() === '/' ? '' : '' }}"><a href="{{ url('tentang') }}"><strong>Tentang</strong></a></li>
           </ul>
         </div>
+        <p>Batik Ciprat Langitan Desa Simbatan</p>
+	<p>
+        Batik ciprat langitan merupakan hasil karya penyandang disabilitas desa Simbatan, Kecamatan Nguntoronadi, Magetan, Jawa Timur.
+        Ciprat dalam bahasa Indonesia berarti percik, motif batik ciprat menyerupai percikan air di selembar kain. 
+        Dibuat dengan memercikkan pewarna batik pada kain yang telah diberi warna dasar. Warna warni batik ciprat menunjukkan nuansa ceria dan segar.
+        
+	</p>
       </nav>
     </header>
 

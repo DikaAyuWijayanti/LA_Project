@@ -3,7 +3,7 @@
 <div class="bg-light py-3">
     <div class="container">
     <div class="row">
-        <strong class="text-black">Cart</strong></div>
+        <span class="mx-2 mb-0">/</span> <strong class="text-black">Cart</strong></div>
     </div>
     </div>
 </div>
@@ -15,21 +15,21 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('user.alamat.simpan') }}" method="POST">
+                    
+                    <form action="{{ route('user.alamat.update',['id' => $id])}}" method="POST">
                     @csrf
                         <div class="form-group">
                         <label for="">Pilih Provinsi</label>
                         <select name="province_id" id="province_id" class="form-control">
-                        <option value="0">Pilih Provinsi</option>
+                        <option value="">Pilih Provinsi</option>
                         @foreach($province as $provinsi)
-                            <option value="{{ $provinsi->province_id }}">{{ $provinsi->nama_province }}</option>
+                            <option value="{{ $provinsi->province_id }}">{{ $provinsi->title }}</option>
                         @endforeach
                         </select>
                         </div>
                         <div class="form-grup">
                             <label for="">Pilih Kota/Kabupaten</label>
                             <select name="cities_id" id="cities_id" class="form-control">
-                            <option value="0">Pilih Kota/Kabupaten</option>
                         </select>
                         </div>
                         <div class="form-grup">
@@ -69,7 +69,7 @@ var toHtml = (tag, value) => {
             if(data.length > 0) {
 			var i = 0;
 			for(i = 0; i < data.length; i++) {
-				op += `<option value="${data[i].city_id}">${data[i].nama_cities}</option>`
+				op += `<option value="${data[i].city_id}">${data[i].title}</option>`
 			}
 		    }
             toHtml('[name="cities_id"]', op);

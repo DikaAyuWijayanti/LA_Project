@@ -9,6 +9,6 @@ class Courier extends Model
     //
     protected $table = 'couriers';
     protected $fillable = [
-        'code', 'title'
+        'code', 'nama_couriers'
     ];
 }

@@ -22,7 +22,7 @@ class PengaturanController extends Controller
             $data['alamat'] = DB::table('alamat_toko')
                                     ->join('cities','cities.city_id','=','alamat_toko.city_id')
                                     ->join('provinces','provinces.province_id','=','cities.province_id')
-                                    ->select('alamat_toko.*','cities.title as kota','provinces.nama_province as prov')->first();
+                                    ->select('alamat_toko.*','cities.nama_cities as kota','provinces.nama_province as prov')->first();
         }
         return view('admin.pengaturan.alamat',$data);
     }

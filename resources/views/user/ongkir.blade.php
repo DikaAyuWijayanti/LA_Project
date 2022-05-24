@@ -84,10 +84,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <button class="btn btn-md btn-primary btn-block btn-check">CEK ONGKIR</button>
-            <br>
-            <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Order Now</button>
-                    <small>Mohon periksa kembali alamat penerima dengan benar agar tidak terjadi salah pengiriman</small>
+            <button class="btn btn-md btn-primary btn-block btn-check">CEK ONGKOS KIRIM</button>
         </div>
     </div>
 

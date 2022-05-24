@@ -27,7 +27,7 @@ class AlamatController extends Controller
             ->select('provinces.nama_province as prov','cities.nama_cities as kota','alamat.*')
             ->where('alamat.user_id',$id_user)
             ->get();
-            return view('user.alamatada',$data);               
+            return view('user.alamat2',$data);               
         }else{
             //jika belum maka tampilkan form untuk mengatur alamat
             return view('user.alamat',$data);            

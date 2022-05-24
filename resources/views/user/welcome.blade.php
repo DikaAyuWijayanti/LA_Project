@@ -26,7 +26,7 @@
         </div>
         <div class="text">
             <h2 class="text-uppercase">Pengiriman</h2>
-            <p>Pengiriman bisa ke seluruh wilayah Indonesia dengan kurir Gocri</p>
+            <p>Pengiriman bisa ke seluruh wilayah Indonesia dengan JNE, TIKI, POS</p>
         </div>
         </div>
         <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">

@@ -61,9 +61,13 @@
                     </select>
                     <small>Jika memilih cod maka akan dikenakan biaya tambahan sebesar Rp 10.000,00</small>
                   </div>
-                 
-
+                  <a href="{{ url('/ongkir') }}">CEHCK ONGKIR</a>
+                  <div>
+                  <small>Mohon klik check ongkir terlebih dahulu</small>
+<br>
+    
                   <div class="form-group">
+                    <div>
                     <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Order Now</button>
                     <small>Mohon periksa kembali alamat penerima dengan benar agar tidak terjadi salah pengiriman</small>
                   </div>

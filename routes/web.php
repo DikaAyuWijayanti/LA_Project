@@ -22,6 +22,7 @@ Route::get('/produk/{id}','user\ProdukController@detail')->name('user.produk.det
 Route::get('/ongkir', 'CheckOngkirController@index');
 Route::post('/ongkir', 'CheckOngkirController@check_ongkir');
 Route::get('/cities/{province_id}', 'CheckOngkirController@getCities');
+Route::get('/tentang', 'TentangController@about');
 
 
 Route::get('/pelanggan',function(){
@@ -50,6 +51,23 @@ Route::group(['middleware' => ['auth','checkRole:admin']],function(){
     Route::get('/admin/product/delete/{id}','admin\ProductController@delete')->name('admin.product.delete');
     Route::post('/admin/product/update/{id}','admin\ProductController@update')->name('admin.product.update');
 
+    Route::get('/admin/transaksi','admin\TransaksiController@index')->name('admin.transaksi');
+    Route::get('/admin/transaksi/perludicek','admin\TransaksiController@perludicek')->name('admin.transaksi.perludicek');
+    Route::get('/admin/transaksi/perludikirim','admin\TransaksiController@perludikirim')->name('admin.transaksi.perludikirim');
+    Route::get('/admin/transaksi/dikirim','admin\TransaksiController@dikirim')->name('admin.transaksi.dikirim');
+    Route::get('/admin/transaksi/detail/{id}','admin\TransaksiController@detail')->name('admin.transaksi.detail');
+    Route::get('/admin/transaksi/konfirmasi/{id}','admin\TransaksiController@konfirmasi')->name('admin.transaksi.konfirmasi');
+    Route::post('/admin/transaksi/inputresi/{id}','admin\TransaksiController@inputresi')->name('admin.transaksi.inputresi');
+    Route::get('/admin/transaksi/selesai','admin\TransaksiController@selesai')->name('admin.transaksi.selesai');
+    Route::get('/admin/transaksi/dibatalkan','admin\TransaksiController@dibatalkan')->name('admin.transaksi.dibatalkan');
+
+    Route::get('/admin/rekening','admin\RekeningController@index')->name('admin.rekening');
+    Route::get('/admin/rekening/edit/{id}','admin\RekeningController@edit')->name('admin.rekening.edit');
+    Route::get('/admin/rekening/tambah','admin\RekeningController@tambah')->name('admin.rekening.tambah');
+    Route::post('/admin/rekening/store','admin\RekeningController@store')->name('admin.rekening.store');
+    Route::get('/admin/rekening/delete/{id}','admin\RekeningController@delete')->name('admin.rekening.delete');
+    Route::post('/admin/rekening/update/{id}','admin\RekeningController@update')->name('admin.rekening.update');
+    
     Route::get('/admin/pelanggan','admin\PelangganController@index')->name('admin.pelanggan');
 });
 
