@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\pengrajin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -30,7 +30,7 @@ class ProductController extends Controller
         $data = array(
             'categories' => Categories::all(),
         );
-        return view('admin.product.tambah',$data);
+        return view('pengrajin.product.tambah',$data);
     }
 
     public function store(Request $request)
@@ -52,7 +52,7 @@ class ProductController extends Controller
 
             ]);
 
-            return redirect()->route('admin.product')->with('status','Berhasil Menambah Produk Baru');
+            return redirect()->route('pengrajin.product')->with('status','Berhasil Menambah Produk Baru');
         }
     }
 
@@ -64,7 +64,7 @@ class ProductController extends Controller
             'product' => Product::findOrFail($id),
             'categories' => Categories::all(),
         );
-        return view('admin.product.edit',$data);
+        return view('pengrajin.product.edit',$data);
     }
 
     public function update($id,Request $request)
@@ -90,7 +90,7 @@ class ProductController extends Controller
         
         $prod->save();
 
-        return redirect()->route('admin.product')->with('status','Berhasil Mengubah Kategori');
+        return redirect()->route('pengrajin.product')->with('status','Berhasil Mengubah Kategori');
     }
 
     public function delete($id)
@@ -99,6 +99,6 @@ class ProductController extends Controller
         $prod = Product::findOrFail($id);
         Product::destroy($id);
         Storage::delete('public/'.$prod->image);
-        return redirect()->route('admin.product')->with('status','Berhasil Mengahapus Produk');
+        return redirect()->route('pengrajin.product')->with('status','Berhasil Mengahapus Produk');
     }
 }

@@ -41,7 +41,7 @@
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Admin</p>
+                  <p class="mb-1 text-black">Pengrajin</p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -78,21 +78,15 @@
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
                   <span class="font-weight-bold mb-2">Batik Ciprat</span>
-                  <span class="text-secondary text-small">Admin</span>
+                  <span class="text-secondary text-small">Pengrajin</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
-            <li class="nav-item {{ Request::path() === 'admin' ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('admin.dashboard') }}">
+            <li class="nav-item {{ Request::path() === 'pengrajin' ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('pengrajin.dashboardpengrajin') }}">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('admin.pelanggan') }}">
-                <span class="menu-title">Pelanggan</span>
-                <i class="mdi mdi mdi-account-multiple menu-icon"></i>
               </a>
             </li>
             <li class="nav-item ">
@@ -110,7 +104,7 @@
             </li>
             <li class="nav-item ">
               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Transaksi</span>
+                <span class="menu-title">Pesanan</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-shopping menu-icon"></i>
               </a>

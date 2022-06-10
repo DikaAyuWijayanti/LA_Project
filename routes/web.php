@@ -29,27 +29,13 @@ Route::get('/pelanggan',function(){
     return 'Pelanggan';
 });
 
-Route::group(['middleware' => ['auth','checkRole:admin']],function(){    
+Route::group(['middleware' => ['auth','checkRole:admin']], function () {   
     Route::get('/admin','DashboardController@index')->name('admin.dashboard');
     Route::get('/pengaturan/alamat','admin\PengaturanController@aturalamat')->name('admin.pengaturan.alamat');
     Route::get('/pengaturan/ubahalamat/{id}','admin\PengaturanController@ubahalamat')->name('admin.pengaturan.ubahalamat');
     Route::get('/pengaturan/alamat/getcity/{id}','admin\PengaturanController@getCity')->name('admin.pengaturan.getCity');
     Route::post('pengaturan/simpanalamat','admin\PengaturanController@simpanalamat')->name('admin.pengaturan.simpanalamat');
     Route::post('pengaturan/updatealamat/{id}','admin\PengaturanController@updatealamat')->name('admin.pengaturan.updatealamat');
-
-    Route::get('/admin/categories','admin\CategoriesController@index')->name('admin.categories');
-    Route::get('/admin/categories/tambah','admin\CategoriesController@tambah')->name('admin.categories.tambah');
-    Route::post('/admin/categories/store','admin\CategoriesController@store')->name('admin.categories.store');
-    Route::post('/admin/categories/update/{id}','admin\CategoriesController@update')->name('admin.categories.update');
-    Route::get('/admin/categories/edit/{id}','admin\CategoriesController@edit')->name('admin.categories.edit');
-    Route::get('/admin/categories/delete/{id}','admin\CategoriesController@delete')->name('admin.categories.delete');
-
-    Route::get('/admin/product','admin\ProductController@index')->name('admin.product');
-    Route::get('/admin/product/tambah','admin\ProductController@tambah')->name('admin.product.tambah');
-    Route::post('/admin/product/store','admin\ProductController@store')->name('admin.product.store');
-    Route::get('/admin/product/edit/{id}','admin\ProductController@edit')->name('admin.product.edit');
-    Route::get('/admin/product/delete/{id}','admin\ProductController@delete')->name('admin.product.delete');
-    Route::post('/admin/product/update/{id}','admin\ProductController@update')->name('admin.product.update');
 
     Route::get('/admin/transaksi','admin\TransaksiController@index')->name('admin.transaksi');
     Route::get('/admin/transaksi/perludicek','admin\TransaksiController@perludicek')->name('admin.transaksi.perludicek');
@@ -71,7 +57,7 @@ Route::group(['middleware' => ['auth','checkRole:admin']],function(){
     Route::get('/admin/pelanggan','admin\PelangganController@index')->name('admin.pelanggan');
 });
 
-Route::group(['middleware' => ['auth','checkRole:customer']],function(){
+Route::group(['middleware' => ['auth','checkRole:customer']], function () {
     Route::post('/keranjang/simpan','user\KeranjangController@simpan')->name('user.keranjang.simpan');
     Route::get('/keranjang','user\KeranjangController@index')->name('user.keranjang');
     Route::post('/keranjang/update','user\KeranjangController@update')->name('user.keranjang.update');
@@ -92,3 +78,19 @@ Route::group(['middleware' => ['auth','checkRole:customer']],function(){
     Route::post('/order/kirimbukti/{id}','user\OrderController@kirimbukti')->name('user.order.kirimbukti');
 });
 
+Route::group(['middleware' => ['auth','checkRole:pengrajin']], function () {   
+    Route::get('/pengrajin','DashboardController@index')->name('pengrajin.dashboardpengrajin');
+    Route::get('/pengrajin/categories','pengrajin\CategoriesController@index')->name('pengrajin.categories');
+    Route::get('/pengrajin/categories/tambah','pengrajin\CategoriesController@tambah')->name('pengrajin.categories.tambah');
+    Route::post('/pengrajin/categories/store','pengrajin\CategoriesController@store')->name('pengrajin.categories.store');
+    Route::post('/pengrajin/categories/update/{id}','pengrajin\CategoriesController@update')->name('pengrajin.categories.update');
+    Route::get('/pengrajin/categories/edit/{id}','pengrajin\CategoriesController@edit')->name('pengrajin.categories.edit');
+    Route::get('/pengrajin/categories/delete/{id}','pengrajin\CategoriesController@delete')->name('pengrajin.categories.delete');
+
+    Route::get('/pengrajin/product','pengrajin\ProductController@index')->name('pengrajin.product');
+    Route::get('/pengrajin/product/tambah','pengrajin\ProductController@tambah')->name('pengrajin.product.tambah');
+    Route::post('/pengrajin/product/store','pengrajin\ProductController@store')->name('pengrajin.product.store');
+    Route::get('/pengrajin/product/edit/{id}','pengrajin\ProductController@edit')->name('pengrajin.product.edit');
+    Route::get('/pengrajin/product/delete/{id}','pengrajin\ProductController@delete')->name('pengrajin.product.delete');
+    Route::post('/pengrajin/product/update/{id}','pengrajin\ProductController@update')->name('pengrajin.product.update');
+});

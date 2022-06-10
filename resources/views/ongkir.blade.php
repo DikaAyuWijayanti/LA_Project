@@ -1,50 +1,60 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.3.2/dist/select2-bootstrap4.min.css" rel="stylesheet" />
-    <title>Selamat Datang di Batik Ciprat Langitan Simbatan</title>
-</head>
-<body style="background: #f3f3f3">
+@extends('user.layouts.app')
 
-<div class="container-fluid mt-5">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h3>ORIGIN</h3>
-                    <hr>
+@section('rekap')
+
+  <div class="row">
+    <div class="col-lg-7 col-md-9">
+      <h1 class="display-2 text-white"><i class="fas fa-truck"></i> Cek Ongkir</h1>
+      <p class="text-white mt-0 mb-2">Menampilkan Halaman Cek Ongkir</p>
+    </div>
+    <div class="offset-md-1 col-md-2  offset-lg-1 col-lg-3">
+    </div>
+  </div>
+
+@endsection
+
+@section('content')
+<div class="row">
+    <div class="col-xl-7 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Form Cek Ongkir</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="{{ url('/user/ongkir') }}" enctype="multipart/form-data">
+              @csrf
+            <h6 class="heading-small text-muted mb-4">Informasi Produk</h6>
+            <div class="pl-lg-4">
+               <div class="row">
+                <div class="col-md-12">
                     <div class="form-group">
-                        <label class="font-weight-bold">PROVINSI ASAL</label>
-                        <select class="form-control provinsi-asal" name="province_origin">
-                            <option value="0">-- pilih provinsi asal --</option>
-                            @foreach ($provinces as $province => $value)
-                                <option value="{{ $province  }}">{{ $value }}</option>
+                        <label for="kota_asal">Provinsi Asal</label>
+                        <select class="form-control js-example-basic-single" name="province_origin" id="province_id" required>
+                          <option value="0">-- pilih provinsi asal --</option>  
+                          @foreach ($provinces as $province => $value)
+                                <option value="{{ $item['province'] }}">{{ $item['nama_province'] }}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="font-weight-bold">KOTA / KABUPATEN ASAL</label>
-                        <select class="form-control kota-asal" name="city_origin">
-                            <option value="">-- pilih kota asal --</option>
-                        </select>
-                    </div>
+                      </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h3>DESTINATION</h3>
-                    <hr>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
                     <div class="form-group">
+                        <label for="kota_tujuan">Kota Asal</label>
+                        <select class="form-control js-example-basic-single" name="city_origin" id="city_id" required>
+                          <option value="">-- pilih kota asal --</option>  
+                          @foreach ($kabupaten as $item)
+                                <option value="{{ $item['city_id'] }}">{{ $item['nama_cities'] }}</option>
+                            @endforeach
+                        </select>
+                      </div>
+                </div>
+                <div class="form-group">
                         <label class="font-weight-bold">PROVINSI TUJUAN</label>
                         <select class="form-control provinsi-tujuan" name="province_destination">
                             <option value="0">-- pilih provinsi tujuan --</option>
@@ -59,145 +69,134 @@
                             <option value="0">-- pilih kota tujuan --</option>
                         </select>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h3>KURIR</h3>
-                    <hr>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
                     <div class="form-group">
-                        <label>PROVINSI TUJUAN</label>
-                        <select class="form-control kurir" name="courier">
-                            <option value="0">-- pilih kurir --</option>
-                            <option value="jne">JNE</option>
-                            <option value="pos">POS</option>
+                        <label for="kurir">Kurir</label>
+                        <select class="form-control js-example-basic-singler" name="kurir" id="kurir" required>
+                          <option value="">Pilih Kurir</option>  
+                          <option value="jne">JNE</option>
                             <option value="tiki">TIKI</option>
+                            <option value="pos">POS</option>
                         </select>
-                    </div>
+                      </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
                     <div class="form-group">
-                        <label class="font-weight-bold">BERAT (GRAM)</label>
-                        <input type="number" class="form-control" name="weight" id="weight" placeholder="Masukkan Berat (GRAM)">
+                        <label for="weight">Berat (KG)</label>
+                        <input autocomplete="off" type="text" class="form-control" id="weight" name="weight" placeholder="KG">
+                        <small class="form-text text-muted">Contoh: 1.5 / 3 / 2.7 </small>
                     </div>
                 </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                    <button type="submit" id="cek-ongkir-sekarang" class="btn btn-primary">Cek Ongkir</button>
+                  </div>
+              </div>
             </div>
+          </form>
         </div>
-        <div class="col-md-3">
-            <button class="btn btn-md btn-primary btn-block btn-check">CEK ONGKIR</button>
-            <br>
-            <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Order Now</button>
-                    <small>Mohon periksa kembali alamat penerima dengan benar agar tidak terjadi salah pengiriman</small>
-        </div>
+      </div>
     </div>
-
-    <div class="row mt-3">
-        <div class="col-md-12">
-            <div class="card d-none ongkir">
-                <div class="card-body">
-                    <ul class="list-group" id="ongkir"></ul>
-                </div>
+    @if (session('ongkir'))
+    <div class="col-xl-5 order-xl-2">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Harga Ongkir</h3>
             </div>
+          </div>
         </div>
-    </div>
+        <div class="card-body p-2">
+          <div class="table-responsive">
+            <table style="border: 0px" class="table">
+              <tr style="border: 0px">
+                <td style="border: 0px"><h5>Nama</h5></td>
+                <td style="border: 0px"><h5>{{ session('ongkir')[0]['name'] }}</h5></td>
+              </tr>
+              <tr style="border: 0px">
+                <td style="border: 0px"><h5>Kode</h5></td>
+                <td style="border: 0px"><h5>{{ session('ongkir')[0]['code'] }}</h5></td>
+              </tr>
+              <tr style="border: 0px">
+                <td style="border: 0px"><h5>Provinsi Asal</h5></td>
+                <td style="border: 0px"><h5>{{ session('data')[0] }}</h5></td>
+              </tr>
+              <tr style="border: 0px">
+                <td style="border: 0px"><h5>Kota Asal</h5></td>
+                <td style="border: 0px"><h5>{{ session('data')[0] }}</h5></td>
+              </tr>
+              <tr style="border: 0px">
+                <td style="border: 0px"><h5>Provinsi Tujuan</h5></td>
+                <td style="border: 0px"><h5>{{ session('data')[0] }}</h5></td>
+              </tr>
+              <tr style="border: 0px">
+                <td style="border: 0px"><h5>Kota Tujuan</h5></td>
+                <td style="border: 0px"><h5>{{ session('data')[1] }}</h5></td>
+              </tr>
+              <tr style="border: 0px">
+                <td style="border: 0px"><h5>Berat</h5></td>
+                <td style="border: 0px"><h5>{{ number_format(session('data')[2], 0, '.', '.') }} KG</h5></td>
+              </tr>
+            </table>
+          </div>
 
-</div>
+          @foreach (session('ongkir')[0]['costs'] as $cost)
+            <hr>
+            <table style="border: 0px" class="table table-flush">
+              <tr style="border: 0px">
+                <td style="border: 0px">Layanan</td>
+                <td style="border: 0px">{{ $cost['service'] }}</td>
+              </tr>
+              <tr style="border: 0px">
+                <td style="border: 0px">Harga</td>
+                <td style="border: 0px">Rp. {{ number_format($cost['cost'][0]['value'], 0, '.', '.') }}</td>
+              </tr>
+              <tr style="border: 0px">
+                <td style="border: 0px">Estimasi</td>
+                <td style="border: 0px">{{ $cost['cost'][0]['etd'] }}</td>
+              </tr>
+            </table>
+          @endforeach
+        </div>
+      </div>
+    </div>  
+    @endif
+  </div>
+@endsection
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-<script>
-    $(document).ready(function(){
-        //active select2
-        $(".provinsi-asal , .kota-asal, .provinsi-tujuan, .kota-tujuan").select2({
-            theme:'bootstrap4',width:'style',
+
+
+
+
+
+
+
+@section('stylesheet')
+
+  <link rel="stylesheet" href="{{ asset('/admin-template/select2/dist/css/select2.min.css') }}">
+
+@endsection
+
+@section('script')
+
+  <script src="{{ asset('/admin-template/select2/dist/js/select2.min.js') }}"></script>
+
+  <script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2({
+            placeholder: "Pilih Kota",
+            allowClear: true
         });
-        //ajax select kota asal
-        $('select[name="province_origin"]').on('change', function () {
-            let provindeId = $(this).val();
-            if (provindeId) {
-                jQuery.ajax({
-                    url: '/cities/'+provindeId,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (response) {
-                        $('select[name="city_origin"]').empty();
-                        $('select[name="city_origin"]').append('<option value="">-- pilih kota asal --</option>');
-                        $.each(response, function (key, value) {
-                            $('select[name="city_origin"]').append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    },
-                });
-            } else {
-                $('select[name="city_origin"]').append('<option value="">-- pilih kota asal --</option>');
-            }
+        $('.js-example-basic-singler').select2({
+            placeholder: "Pilih Kurir",
+            allowClear: true
         });
-        //ajax select kota tujuan
-        $('select[name="province_destination"]').on('change', function () {
-            let provindeId = $(this).val();
-            if (provindeId) {
-                jQuery.ajax({
-                    url: '/cities/'+provindeId,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (response) {
-                        $('select[name="city_destination"]').empty();
-                        $('select[name="city_destination"]').append('<option value="">-- pilih kota tujuan --</option>');
-                        $.each(response, function (key, value) {
-                            $('select[name="city_destination"]').append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    },
-                });
-            } else {
-                $('select[name="city_destination"]').append('<option value="">-- pilih kota tujuan --</option>');
-            }
-        });
-        //ajax check ongkir
-        let isProcessing = false;
-        $('.btn-check').click(function (e) {
-            e.preventDefault();
-
-            let token            = $("meta[name='csrf-token']").attr("content");
-            let city_origin      = $('select[name=city_origin]').val();
-            let city_destination = $('select[name=city_destination]').val();
-            let courier          = $('select[name=courier]').val();
-            let weight           = $('#weight').val();
-
-            if(isProcessing){
-                return;
-            }
-
-            isProcessing = true;
-            jQuery.ajax({
-                url: "/ongkir",
-                data: {
-                    _token:              token,
-                    city_origin:         city_origin,
-                    city_destination:    city_destination,
-                    courier:             courier,
-                    weight:              weight,
-                },
-                dataType: "JSON",
-                type: "POST",
-                success: function (response) {
-                    isProcessing = false;
-                    if (response) {
-                        $('#ongkir').empty();
-                        $('.ongkir').addClass('d-block');
-                        $.each(response[0]['costs'], function (key, value) {
-                            $('#ongkir').append('<li class="list-group-item">'+response[0].code.toUpperCase()+' : <strong>'+value.service+'</strong> - Rp. '+value.cost[0].value+' ('+value.cost[0].etd+' hari)</li>')
-                        });
-
-                    }
-                }
-            });
-
-        });
-
     });
-</script>
-</body>
-</html>
+  </script>
+@endsection

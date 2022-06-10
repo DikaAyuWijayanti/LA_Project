@@ -28,7 +28,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="{{ route('admin.categories.update',['id' => $categorie->id]) }}" method="POST">
+                            <form action="{{ route('pengrajin.categories.update',['id' => $categorie->id]) }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                 <label for="exampleInputUsername1">Nama Kategori</label>

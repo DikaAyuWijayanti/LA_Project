@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\pengrajin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,13 +16,13 @@ class CategoriesController extends Controller
             'categories' => Categories::all()
         );
         //menampilkan view
-        return view('admin.categories.index',$data);
+        return view('pengrajin.categories.index',$data);
     }
 
     //function menampilkan view tambah data
     public function tambah()
     {
-        return view('admin.categories.tambah');
+        return view('pengrajin.categories.tambah');
     }
 
     public function store(Request $request)
@@ -33,7 +33,7 @@ class CategoriesController extends Controller
         ]);
         
         //lalu reireact ke route admin.categories dengan mengirim flashdata(session) berhasil tambah data untuk manampilkan alert succes tambah data
-        return redirect()->route('admin.categories')->with('status','Berhasil Menambah Kategori');
+        return redirect()->route('pengrajin.categories')->with('status','Berhasil Menambah Kategori');
     }
 
     public function update($id,Request $request)
@@ -45,7 +45,7 @@ class CategoriesController extends Controller
 
         //lalu simpan perubahan
         $categorie->save();
-        return redirect()->route('admin.categories')->with('status','Berhasil Mengubah Kategori');
+        return redirect()->route('pengrajin.categories')->with('status','Berhasil Mengubah Kategori');
     }
 
     //function menampilkan form edit
@@ -54,7 +54,7 @@ class CategoriesController extends Controller
         $data = array(
             'categorie' => $categorie = Categories::FindOrFail($id)
         );
-        return view('admin.categories.edit',$data);
+        return view('pengrajin.categories.edit',$data);
     }
 
     public function delete($id)
@@ -62,6 +62,6 @@ class CategoriesController extends Controller
         //hapus data sesuai id dari parameter
         Categories::destroy($id);
         
-        return redirect()->route('admin.categories')->with('status','Berhasil Mengahapus Kategori');
+        return redirect()->route('pengrajin.categories')->with('status','Berhasil Mengahapus Kategori');
     }
 }

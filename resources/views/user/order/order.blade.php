@@ -114,6 +114,7 @@
                     <td>{{ $o->name }}</td>
                     <td>
                     <a href="{{ route('user.order.detail',['id' => $o->id]) }}" class="btn btn-success">Detail</a>
+                    <a href=" /costumer/pdf/{{$order->id}} "><button class="button">Download Invoice</button></a>
                     </td>
                 </tr>
                 @endforeach

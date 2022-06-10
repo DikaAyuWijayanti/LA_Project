@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('pengrajin.layout.app')
 @section('content')
 <div class="content-wrapper">
             <div class="page-header">
@@ -28,7 +28,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="{{ route('admin.categories.store') }}" method="POST">
+                            <form action="{{ route('pengrajin.categories.store') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                 <label for="exampleInputUsername1">Nama Kategori</label>

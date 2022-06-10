@@ -40,6 +40,7 @@
             <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
             </div>
 </div>
+<a href="" class="btn btn-primary mt-2">Pre-Order</a>
         </div>
         <p><button type="submit" class="buy-now btn btn-sm btn-primary">Add To Cart</button></p>
         </form>
