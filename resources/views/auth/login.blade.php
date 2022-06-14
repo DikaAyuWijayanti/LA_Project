@@ -29,7 +29,7 @@
                 <h1><strong> Selamat Datang di Batik Ciprat Langitan Simbatan </strong></h1>
                 </div>
                 <h5>Hallo! Selamat Datang di Batik Ciprat Langitan Simbatan</h5>
-                <h6 class="font-weight-light">Silahkan login terlebih dahulu untuk melanjutkan</h6>
+                <h6 class="font-weight-light">Silahkan login terlebih dahulu untuk melakukan pembelian</h6>
                 <form class="pt-3" method="POST" action="{{ route('login') }}">
                   @csrf
                   <div class="form-group">

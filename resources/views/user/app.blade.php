@@ -140,7 +140,34 @@
           <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="row">
               <div class="col-md-12">
-          <div class="col-md-6 col-lg-6">
+              <footer class="footer">
+		<div class="footer-area">
+			<div class="container">
+				<div class="row section_gap">
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="block-5 mb-5">
+							<h4 class="footer-heading mb-4">Our Mission</h4>
+              <ul class="list-unstyled">
+							<p>
+                Memperkenalkan produk asli Batik Ciprat Langitan Desa Simbatan, dengan kualitas terbaik.
+							</p>
+							<p>
+								Memperkenalkan produk lokal dengan kualitas internasional.
+							</p>
+						</div>
+            </div>
+					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Quick Links</h4>
+							<ul class="list">
+								<li><a href="">Home</a></li>
+								<li><a href="">Produk</a></li>
+								<li><a href="#">Tentang</a></li>
+							</ul>
+</div>
+          	</div>
+					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
             <div class="block-5 mb-5">
               <h3 class="footer-heading mb-4">Contact Info</h3>
               <ul class="list-unstyled">
@@ -149,18 +176,26 @@
                 <li class="email">batikcipratlangitan@gmail.com</li>
               </ul>
             </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-           
-          </div>
-        </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> Batik Ciprat Langitan Simbatan |  <i class="icon-shopping-bag" aria-hidden="true"></i> by <target="_blank" class="text-primary">BatikCiprat
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Batik Ciprat Langitan Simbatan |<i class="icon-shopping-bag" aria-hidden="true"></i> by <target="_blank" class="text-primary">BatikCiprat
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
-          </div>
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area  =================-->
           
         </div>
       </div>
