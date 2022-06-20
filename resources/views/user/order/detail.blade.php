@@ -84,6 +84,7 @@
                         </table>
                     
                 </div>
+                <a href="{{ route('user.posts') }}" class="btn btn-primary mt-2">Penilaian Produk</a>
                 </div>
             </div>
         </div>

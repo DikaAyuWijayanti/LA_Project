@@ -55,14 +55,12 @@
 body {
     background-color: #E0FFFF
 }
-
 .card {
     width: 350px;
     border: none;
     box-shadow: 5px 6px 6px 2px #e9ecef;
     border-radius: 12px
 }
-
 .circle-image img {
     border: 6px solid #fff;
     border-radius: 100%;
@@ -76,7 +74,6 @@ body {
     background: #e7d184;
     cursor: pointer
 }
-
 .dot {
     height: 18px;
     width: 18px;
@@ -89,39 +86,31 @@ body {
     left: 186px;
     z-index: 1000
 }
-
 .name {
     margin-top: -21px;
     font-size: 18px
 }
-
 .fw-500 {
     font-weight: 500 !important
 }
-
 .start {
     color: green
 }
-
 .stop {
     color: red
 }
-
 .rate {
     border-bottom-right-radius: 12px;
     border-bottom-left-radius: 12px
 }
-
 .rating {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center
 }
-
 .rating>input {
     display: none
 }
-
 .rating>label {
     position: relative;
     width: 1em;
@@ -130,31 +119,25 @@ body {
     color: #FFD600;
     cursor: pointer
 }
-
 .rating>label::before {
     content: "\2605";
     position: absolute;
     opacity: 0
 }
-
 .rating>label:hover:before,
 .rating>label:hover~label:before {
     opacity: 1 !important
 }
-
 .rating>input:checked~label:before {
     opacity: 1
 }
-
 .rating:hover>input:checked~label:before {
     opacity: 0.4
 }
-
 .buttons {
     top: 36px;
     position: relative
 }
-
 .rating-submit {
     border-radius: 15px;
     color: #fff;

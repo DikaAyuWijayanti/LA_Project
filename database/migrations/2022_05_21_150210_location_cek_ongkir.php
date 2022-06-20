@@ -14,7 +14,7 @@ class LocationCekOngkir extends Migration
     public function up()
     {
         Schema::create('cekongkir', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->unsignedBigInteger('province_id');
             $table->string('nama_province');
             $table->unsignedBigInteger('city_id');

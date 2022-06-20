@@ -11246,11 +11246,11 @@ code {
     border-color: #b66dff; }
 
 .btn-primary:not(.btn-light) {
-  color: #ffffff; }
+  color: #4169E1; }
   .btn-primary:not(.btn-light):hover, .btn-primary:not(.btn-light):focus, .btn-primary:not(.btn-light):active {
-    color: #ffffff; }
+    color: #4169E1; }
   .btn-primary:not(.btn-light):focus, .btn-primary:not(.btn-light):active {
-    background: #b66dff;
+    background: #6495ED;
     border-color: #b66dff; }
 
 .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {

@@ -15,15 +15,17 @@ class CreateOrderTable extends Migration
     public function up()
     {
         Schema::create('order', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('invoice');
-            $table->unsignedBigInteger('user_id');
+            $table->integer('user_id')->unsigned()->index();
             $table->integer('subtotal');
             $table->string('no_resi')->nullable();
             $table->unsignedBigInteger('status_order_id');
             $table->string('metode_pembayaran');
             $table->integer('ongkir');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -15,11 +15,12 @@ class CreateCitiesTable extends Migration
     public function up()
     {
         Schema::create('cities', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('province_id');
-            $table->unsignedBigInteger('city_id');
+            $table->increments('city_id');
+            $table->integer('province_id')->unsigned();
             $table->string('nama_cities');
             $table->timestamps();
+
+            $table->foreign('province_id')->references('province_id')->on('provinces')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

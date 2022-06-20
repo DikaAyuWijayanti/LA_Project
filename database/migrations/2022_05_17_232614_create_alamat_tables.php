@@ -16,10 +16,14 @@ class CreateAlamatTables extends Migration
     {
         Schema::create('alamat', function (Blueprint $table) {
             $table->id();
-            $table->integer('cities_id');
+            $table->integer('cities_id')->unsigned()->index();
             $table->string('detail');
-            $table->unsignedBigInteger('user_id');
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('kode_pos');
             $table->timestamps();
+
+            $table->foreign('cities_id')->references('city_id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -29,9 +29,9 @@ Route::get('/pelanggan',function(){
     return 'Pelanggan';
 });
 
-Route::group(['middleware' => ['auth','checkRole:admin']], function () {   
+Route::middleware(['auth:admin'])->group(function () {   
     Route::get('/admin','DashboardController@index')->name('admin.dashboard');
-    Route::get('/pengaturan/alamat','admin\PengaturanController@aturalamat')->name('admin.pengaturan.alamat');
+    Route::get('/pengaturan/alamat','admin\PengaturanController@aturalamat')->name('admin.pengaturan.alamat')->middleware('can:role,"admin"');
     Route::get('/pengaturan/ubahalamat/{id}','admin\PengaturanController@ubahalamat')->name('admin.pengaturan.ubahalamat');
     Route::get('/pengaturan/alamat/getcity/{id}','admin\PengaturanController@getCity')->name('admin.pengaturan.getCity');
     Route::post('pengaturan/simpanalamat','admin\PengaturanController@simpanalamat')->name('admin.pengaturan.simpanalamat');
@@ -76,6 +76,9 @@ Route::group(['middleware' => ['auth','checkRole:customer']], function () {
     Route::get('/order/pesanandibatalkan/{id}','user\OrderController@pesanandibatalkan')->name('user.order.pesanandibatalkan');
     Route::get('/order/pembayaran/{id}','user\OrderController@pembayaran')->name('user.order.pembayaran');
     Route::post('/order/kirimbukti/{id}','user\OrderController@kirimbukti')->name('user.order.kirimbukti');
+    Route::get(' /user/posts', 'PostController@posts')->name('posts');
+    Route::post('/user/posts', 'PostController@postPost')->name('posts.post');
+    Route::get('/user/posts/{id}', 'PostController@show')->name('posts.show');
 });
 
 Route::group(['middleware' => ['auth','checkRole:pengrajin']], function () {   

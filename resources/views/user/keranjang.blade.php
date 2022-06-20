@@ -3,7 +3,7 @@
 <div class="bg-light py-3">
     <div class="container">
     <div class="row">
-        <strong class="text-black">Cart</strong></div>
+        <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Cart</strong></div>
     </div>
     </div>
 </div>
@@ -16,6 +16,7 @@
             <table class="table table-bordered">
             <thead>
                 <tr>
+                <th class="product-thumbnail">Gambar</th>
                 <th class="product-name">Produk</th>
                 <th class="product-price">Harga</th>
                 <th class="product-quantity">Jumlah</th>
@@ -27,6 +28,9 @@
                 <tr>
                     
                 <?php $subtotal=0; foreach($keranjangs as $keranjang): ?>
+                <td class="product-thumbnail">
+                    <img src="{{ asset('storage/'.$keranjang->image) }}" alt="Image" class="img-fluid" width="150">
+                </td>
                 <td class="product-name">
                     <h2 class="h5 text-black">{{ $keranjang->nama_produk }}</h2>
                 </td>
@@ -87,13 +91,12 @@
                 @if($cekalamat > 0)
                 <div class="col-md-12">
                 <a href="{{ route('user.checkout') }}" class="btn btn-primary btn-lg py-3 btn-block" >Checkout</a>
-                <small>Jika ada perubahan pada jumlah pesanan, sebelum melakukan checkout tekan tombol Update Keranjang terlebih dahulu</small>
+                <small>Jika Merubah Quantity Pada Keranjang Maka Klik Update Keranjang Dulu Sebelum Melakukan Checkout</small>
                 </div>
                 @else
                 <div class="col-md-12">
                 <a href="{{ route('user.alamat') }}" class="btn btn-primary btn-lg py-3 btn-block" >Atur Alamat</a>
-                <small>Anda belum mengatur alamat.<br>
-            Silahkan atur alamat Anda terlebih dahulu.</small>
+                <small>Anda Belum Mengatur Alamat</small>
                 </div>
                 @endif
             </div>

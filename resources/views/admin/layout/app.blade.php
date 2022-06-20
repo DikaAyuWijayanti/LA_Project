@@ -47,16 +47,38 @@
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
                   
-                  <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
-                    <i class="mdi mdi-logout mr-2 text-primary"></i> Logout 
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-              </div>
+                <div id="my-nav" class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        @guest('admin')
+                        <li class="nav-item">
+                            <a href="{{ route('admin.login') }}" class="nav-link">Login</a>
+                        </li>
+                        @else
+                        @can('role',['admin','pengrajin'])
+                            <li class="nav-item">
+                                <a href="{{ route('post') }}" class="nav-link">Data Post</a>
+                            </li>
+                        @endcan
+                        @can('role','admin')
+                            <li class="nav-item">
+                                <a href="{{ route('admin') }}" class="nav-link">Data Admin</a>
+                            </li>
+                        @endcan
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#" class="dropdown-item">My Profile</a>
+                                <a href="{{ route('admin.logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                class="dropdown-item">Logout</a>
+                                <form action="{{ route('admin.logout') }}" id="logout-form" method="post">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @endguest
+                    </ul>
+                </div>
             </li>
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -96,21 +118,8 @@
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-                <span class="menu-title">Data Produk</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi mdi-table-large menu-icon"></i>
-              </a>
-              <div class="collapse" id="ui-basic1">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{ route('pengrajin.product') }}">Produk</a></li>
-                  <li class="nav-item"> <a class="nav-link {{ Request::path() === 'pengrajin/categories' ? 'active' : '' }}" href="{{ route('pengrajin.categories') }}">Kategori</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item ">
               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Transaksi</span>
+                <span class="menu-title">Melihat Pesanan</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-shopping menu-icon"></i>
               </a>
@@ -135,6 +144,18 @@
                 <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{ route('admin.pengaturan.alamat') }}"> Alamat</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ route('admin.rekening') }}">No Rekening</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+                <span class="menu-title">Rekap Penjualan</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi mdi-table-large menu-icon"></i>
+              </a>
+              <div class="collapse" id="ui-basic1">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{{ route('admin.laporan') }}">Rekap Penjualan</a></li>
                 </ul>
               </div>
             </li>

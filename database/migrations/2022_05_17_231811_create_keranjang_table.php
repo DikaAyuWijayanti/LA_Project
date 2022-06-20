@@ -15,9 +15,9 @@ class CreateKeranjangTable extends Migration
     public function up()
     {
         Schema::create('keranjang', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('products_id');
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('products_id')->unsigned();
             $table->integer('qty');
             $table->timestamps();
         });

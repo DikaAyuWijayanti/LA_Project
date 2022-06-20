@@ -163,7 +163,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-
+        willvincent\Rateable\RateableServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
