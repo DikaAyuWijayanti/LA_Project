@@ -34,7 +34,7 @@ class DashboardpengrajinController extends Controller
                 'order_baru' => $order_terbaru
             );
             
-            return view('pengrajin/dashboard',$data);
+            return view('pengrajin/dashboardpengrajin',$data);
         }
     }
     

@@ -21,6 +21,7 @@
                     @csrf
                   <table class="table site-block-order-table mb-5">
                     <thead>
+                      <th>Tanggal Order</th>
                       <th>Product</th>
                       <th>Total</th>
                     </thead>
@@ -37,17 +38,19 @@
                       </tr>
                       @endforeach
                       <tr>
-                        <td>
-                          Ongkir
-                        </td>
-                        <td>
-                          Rp .{{ number_format($ongkir,2,',','.') }}
-                        </td>
+                      <form method="POST" action="/konfirmasi-check-out">
+                                        @csrf
+                                        <select class="custom-select" name="id_ongkir">
+                                            <option selected>Select Shipping Post</option>
+                                            
+                                            <option value="{{ $ongkir->id }}">{{ $ongkirs->namaKota }} - Rp. {{number_format($ongkirs->tarif)}}</option>
+                                            
+                                        </select>
                       </tr>
                       <tr>
                         <td class="text-black font-weight-bold"><strong>Jumlah Pembayaran</strong></td>
                         <td class="text-black font-weight-bold">
-                        <?php $alltotal = $subtotal + $ongkir; ?>  
+                        <?php $alltotal = $subtotal + $ongkirs; ?>  
                         <strong>Rp. {{ number_format($alltotal,2,',','.') }}</strong></td>
                       </tr>
                       <tr>
@@ -75,8 +78,12 @@
                     </select>
                     <small>Jika memilih cod maka akan dikenakan biaya tambahan sebesar Rp. 10.000,00</small>
                   </div>
-                 
-
+                  <form action="{{ url('view-cart') }}/{{ $order_detail->id }}" method="post">
+                    @csrf
+                      {{ method_field('DELETE') }}
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete data?');"><i class="fa fa-trash"></i></button>
+                    </form>
+                    
                   <div class="form-group">
                     <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Pesan Sekarang</button>
                     <small>Mohon periksa alamat penerima dengan benar agar tidak terjadi salah pengiriman</small>
@@ -85,7 +92,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
         <!-- </form> -->

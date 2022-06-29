@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('pengrajin.layout.app')
 @section('content')
 <div class="content-wrapper">
             <div class="page-header">
@@ -42,6 +42,8 @@
                                 <td>{{ $order->name }}</td>
                                 <td align="center">
                                 <div class="btn-group" role="group" aria-label="Basic example">
+                                  <a href="{{ route('pengrajin.pesanan.detail',['id'=>$order->id]) }}"  class="btn btn-warning btn-sm">
+                                    Input No Resi
                                   </a>
                                 </div>
                                 </td>

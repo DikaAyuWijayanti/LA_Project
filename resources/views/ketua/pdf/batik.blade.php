@@ -70,28 +70,24 @@ img,tr {page-break-inside: avoid;}
 </head>
 
 <body>
-    <h1>Data Produk Batik Ciprat Langitan</h1>
+    <h1>Data Penjualan Produk Batik Ciprat Langitan</h1>
     <hr>
     <table>
         <thead>
             <tr>
+                <td background-color: #91b9c9;>Order Id</td>
+                <td background-color: #91b9c9;>Produk Id</td>
                 <td background-color: #91b9c9;>Nama Batik</td>
-                <td background-color: #91b9c9;>Description</td>
-                <td background-color: #91b9c9;>Price</td>
-                <td background-color: #91b9c9;>Weigth</td>
-                <td background-color: #91b9c9;>Kategori</td>
-                <td background-color: #91b9c9;>Stok</td>
+                <td background-color: #91b9c9;>Total</td>
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $product)
+            @foreach ($detail_orders as $detail_order)
                 <tr>
-                    <td> {{ $product->name }} </td>
-                    <td> {{ $product->description }} </td>
-                    <td> {{ $product->price }} </td>
-                    <td> {{ $product->wheigth }} </td>
-                    <td> {{ $product->categories_id }} </td>
-                    <td> {{ $product->stok }} </td>
+                    <td> {{ $detail_order->id }} </td>
+                    <td> {{ $detail_order->order_id }} </td>
+                    <td> {{ $detail_order->productName }} </td>
+                    <td> {{ $detail_order->qty }} </td>
                 </tr>
             @endforeach
         </tbody>

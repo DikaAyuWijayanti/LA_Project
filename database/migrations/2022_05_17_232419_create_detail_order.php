@@ -18,6 +18,7 @@ class CreateDetailOrder extends Migration
             $table->increments('id');
             $table->integer('order_id')->unsigned()->index();
             $table->integer('product_id')->unsigned()->index();
+            $table->string('productName');
             $table->integer('qty');
             $table->timestamps();
         });

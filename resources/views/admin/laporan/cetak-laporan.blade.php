@@ -15,15 +15,15 @@
                 </div>
 
                 <div class="panel-body">
-                    {!! Form::open(['url' => route('export.products.post'), 'method' => 'post', 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['url' => route('export.order.post'), 'method' => 'post', 'class' => 'form-horizontal']) !!}
 
-                    <div class="form-group {!! $errors->has('categories_id') ? 'has-error' : '' !!}">
-                        {!! Form::label('categories_id', 'name', ['class' => 'col-md-2 control-label']) !!}
+                    <div class="form-group {!! $errors->has('id') ? 'has-error' : '' !!}">
+                        {!! Form::label('id', 'name', ['class' => 'col-md-2 control-label']) !!}
 
                         <div class="col-md-4">
-                            {!! Form::select('categories_id[]', ['' => '']+App\Author::pluck('name', 'id')->all(), null, ['class' => 'js-selectize', 'multiple', 'placeholder' => 'Pilih Nama Batik']) !!}
+                            {!! Form::select('id[]', ['' => '']+App\Order::pluck('invoice', 'user_id', 'order_date', 'no_resi', 'status_order_id', 'metode_pembayaran', 'ongkir', 'biaya_cod', 'subtotal', 'biaya_cod', 'pesan', 'no_hp')->all(), null, ['class' => 'js-selectize', 'multiple', 'placeholder' => 'Pilih Invoice']) !!}
 
-                            {!! $errors->first('categories_id', '<p class="help-block">:message</p>') !!}
+                            {!! $errors->first('id', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
 

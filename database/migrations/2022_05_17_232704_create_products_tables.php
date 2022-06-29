@@ -18,8 +18,9 @@ class CreateProductsTables extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-            $table->text('image');
+            $table->string('image');
             $table->integer('price');
+            $table->enum('status', ['is_ready', 'Pre_order']);
             $table->integer('weigth');
             $table->integer('categories_id')->unsigned()->index();
             $table->timestamps();

@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('pengrajin.layout.app')
 @section('content')
 <div class="content-wrapper">
             <div class="page-header">
@@ -15,7 +15,7 @@
                   <div class="card-body">
                     <div class="row mb-3">
                       <div class="col">
-                      <h4 class="card-title">Data Pesanan Perlu Di Kirim</h4>
+                      <h4 class="card-title">Data Pesanan Baru</h4>
                       </div>
                     </div>
                     <div class="table-responsive">
@@ -42,6 +42,8 @@
                                 <td>{{ $order->name }}</td>
                                 <td align="center">
                                 <div class="btn-group" role="group" aria-label="Basic example">
+                                  <a href="{{ route('pengrajin.pesanan.detail',['id'=>$order->id]) }}" class="btn btn-warning btn-sm">
+                                   Lihat Detail
                                   </a>
                                 </div>
                                 </td>

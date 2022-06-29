@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class LocationCekOngkir extends Migration
+class CreatePenggunasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class LocationCekOngkir extends Migration
      */
     public function up()
     {
-        Schema::create('cekongkir', function (Blueprint $table) {
+        Schema::create('pengguna', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('province_id');
-            $table->string('nama_province');
-            $table->unsignedBigInteger('city_id');
-            $table->string('nama_cities');
-            $table->string('nama_couriers');
+            $table->string('name');
+            $table->string('level')->nullable();;
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class LocationCekOngkir extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('provinces');
+        Schema::dropIfExists('pengguna');
     }
 }

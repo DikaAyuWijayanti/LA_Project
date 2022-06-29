@@ -47,9 +47,24 @@ return [
             'hash' => false,
         ],
 
-        'admin' => [
+        'pengguna' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'penggunas',
+        ],
+
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'pengrajin' => [
+            'driver' => 'session',
+            'provider' => 'pengrajins',
+        ],
+
+        'ketua' => [
+            'driver' => 'session',
+            'provider' => 'ketuas',
         ],
     ],
 
@@ -76,15 +91,20 @@ return [
             'model' => App\User::class,
         ],
 
-        'admins' => [
+        'penggunas' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model' => App\Pengguna::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'pengrajins' => [
+            'driver' => 'eloquent',
+            'model' => App\Pengrajin::class,
+        ],
+
+        'ketuas' => [
+            'driver' => 'eloquent',
+            'model' => App\Ketua::class,
+        ],
     ],
 
     /*

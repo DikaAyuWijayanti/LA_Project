@@ -19,10 +19,11 @@ class CreateOrderTable extends Migration
             $table->string('invoice');
             $table->integer('user_id')->unsigned()->index();
             $table->integer('subtotal');
+            $table->date('order_date');
             $table->string('no_resi')->nullable();
             $table->unsignedBigInteger('status_order_id');
             $table->string('metode_pembayaran');
-            $table->integer('ongkir');
+            $table->integer('ongkir_id')->unsigned()->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

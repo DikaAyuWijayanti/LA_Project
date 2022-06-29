@@ -34,6 +34,7 @@ class DashboardController extends Controller
             'order_baru' => $order_terbaru
         );
         
-        return view('admin/dashboard',$data);
+        $var_nama = "Admin";
+        return view('admin/dashboard',$data, compact('var_nama'));
     }
 }

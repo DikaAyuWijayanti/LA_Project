@@ -1,89 +1,31 @@
-<?php
-error_reporting(0);
-$koneksi = new mysqli("localhost","root","","sistem_pemasaran");
-$content ='
+@extends('layouts.app')
 
-<style type="text/css">
-	
-	.tabel{border-collapse: collapse;}
-	.tabel th{padding: 8px 5px;  background-color:  #cccccc;  }
-	.tabel td{padding: 8px 5px;     }
-</style>
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li><a style="color:teal;" href="{{ url('/home') }}">Home</a></li>
+                <li style="color:blue;"  class="active">Laporan Hasil Penjualan</li>
+            </ul>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 style="color:blue;"  class="panel-title">Laporan Hasil Penjualan</h2>
+                </div>
 
+                <div class="panel-body">
+                    <p>
+                        <a class="btn btn-primary" href="{{ url('/admin/laporan/cetak-laporan') }}">Export</a>
+                    </p>
 
-';
+                    {!! $html->table(['class' => 'table table-striped']) !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
 
-
- $content .= '
-<page>
-<h1>Laporan Data Transaksi</h1>
-<br>
-<table border="1px" class="tabel"  >
-<tr>
-<th>No </th>
-<th>No Invoice</th>
-<th>Pemesan</th>
-<th>Subtotal</th>
-<th>Metode Pembayaran</th>
-<th>Status Pemesanan</th>
-<th>Aksi</th>
-
-</tr>';
-
-if (isset($_POST['cetak'])) {
-
-
-	
-	$tgl1 = $_POST['tanggal1'];
-	$tgl2 = $_POST['tanggal2'];
-
-	
-		
-	$no = 1;
-	$sql = $koneksi->query("select * from order where tgl_input between '$tgl1' and '$tgl2' ");
-	while ($tampil=$sql->fetch_assoc()) {
-		$judulbuku = $koneksi->query('SELECT judul FROM tb_buku WHERE id_buku=$tampil->judul');
-		$content .='
-			<tr>
-				<td align="center">'.$no++.'</td>
-				<td align="center">'.$tampil['judul'].'</td>
-				<td align="center">'.$tampil['nis'].'</td>
-				<td align="center">'.$tampil['nama'].'</td>
-				<td align="center">'.$tampil['tgl_pinjam'].'</td>
-				<td align="center">'.$tampil['tgl_kembali'].'</td>
-				<td align="center">'.$tampil['status'].'</td>
-			</tr>
-		';
-	
-}
-}else{
-
-$no=1;
-
-$sql = $koneksi->query("select * from tb_transaksi");
-while ($tampil=$sql->fetch_assoc()) {
-	$content .='
-		<tr>
-			<td align="center">'.$no++.'</td>
-			<td align="center">'.$tampil['judul'].'</td>
-			<td align="center">'.$tampil['nis'].'</td>
-			<td align="center">'.$tampil['nama'].'</td>
-			<td align="center">'.$tampil['tgl_pinjam'].'</td>
-			<td align="center">'.$tampil['tgl_kembali'].'</td>
-			<td align="center">'.$tampil['status'].'</td>
-		</tr>
-	';
-}
-}
-
-$content .='
-
-
-</table>
-</page>';
-
-require_once('../assets/html2pdf/html2pdf.class.php');
-$html2pdf = new HTML2PDF('P','A4','fr');
-$html2pdf->WriteHTML($content);
-$html2pdf->Output('exemple.pdf');
-?>
+@section('scripts')
+    {!! $html->scripts() !!}
+@endsection

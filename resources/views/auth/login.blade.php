@@ -30,7 +30,7 @@
                 </div>
                 <h5>Hallo! Selamat Datang di Batik Ciprat Langitan Simbatan</h5>
                 <h6 class="font-weight-light">Silahkan login terlebih dahulu untuk melakukan pembelian</h6>
-                <form class="pt-3" method="POST" action="{{ route('login') }}">
+                <form action="{{route('postlogin')}}" method="post">
                   @csrf
                   <div class="form-group">
                   <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">

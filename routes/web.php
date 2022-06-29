@@ -29,9 +29,12 @@ Route::get('/pelanggan',function(){
     return 'Pelanggan';
 });
 
-Route::middleware(['auth:admin'])->group(function () {   
+Route::post('/postlogin', 'LoginController@postlogin')->name('postlogin');
+
+Route::group(['middleware' => ['auth:pengguna','ceklevel:admin']],function(){     
     Route::get('/admin','DashboardController@index')->name('admin.dashboard');
-    Route::get('/pengaturan/alamat','admin\PengaturanController@aturalamat')->name('admin.pengaturan.alamat')->middleware('can:role,"admin"');
+    Route::get('/pengaturan/alamat','admin\PengaturanController@aturalamat')->name('admin.pengaturan.alamat')->middleware('role:admin')->name('admin.pengaturan.alamat');
+
     Route::get('/pengaturan/ubahalamat/{id}','admin\PengaturanController@ubahalamat')->name('admin.pengaturan.ubahalamat');
     Route::get('/pengaturan/alamat/getcity/{id}','admin\PengaturanController@getCity')->name('admin.pengaturan.getCity');
     Route::post('pengaturan/simpanalamat','admin\PengaturanController@simpanalamat')->name('admin.pengaturan.simpanalamat');
@@ -43,7 +46,6 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/transaksi/dikirim','admin\TransaksiController@dikirim')->name('admin.transaksi.dikirim');
     Route::get('/admin/transaksi/detail/{id}','admin\TransaksiController@detail')->name('admin.transaksi.detail');
     Route::get('/admin/transaksi/konfirmasi/{id}','admin\TransaksiController@konfirmasi')->name('admin.transaksi.konfirmasi');
-    Route::post('/admin/transaksi/inputresi/{id}','admin\TransaksiController@inputresi')->name('admin.transaksi.inputresi');
     Route::get('/admin/transaksi/selesai','admin\TransaksiController@selesai')->name('admin.transaksi.selesai');
     Route::get('/admin/transaksi/dibatalkan','admin\TransaksiController@dibatalkan')->name('admin.transaksi.dibatalkan');
 
@@ -57,7 +59,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/pelanggan','admin\PelangganController@index')->name('admin.pelanggan');
 });
 
-Route::group(['middleware' => ['auth','checkRole:customer']], function () {
+Route::group(['middleware' => ['auth:user', 'ceklevel:user']], function () {
     Route::post('/keranjang/simpan','user\KeranjangController@simpan')->name('user.keranjang.simpan');
     Route::get('/keranjang','user\KeranjangController@index')->name('user.keranjang');
     Route::post('/keranjang/update','user\KeranjangController@update')->name('user.keranjang.update');
@@ -81,8 +83,8 @@ Route::group(['middleware' => ['auth','checkRole:customer']], function () {
     Route::get('/user/posts/{id}', 'PostController@show')->name('posts.show');
 });
 
-Route::group(['middleware' => ['auth','checkRole:pengrajin']], function () {   
-    Route::get('/pengrajin','DashboardController@index')->name('pengrajin.dashboardpengrajin');
+Route::group(['middleware' => ['auth:pengrajin', 'ceklevel:pengrajin']], function () {  
+    Route::get('/pengrajin','DashboardpengrajinController@index')->name('pengrajin.dashboardpengrajin');
     Route::get('/pengrajin/categories','pengrajin\CategoriesController@index')->name('pengrajin.categories');
     Route::get('/pengrajin/categories/tambah','pengrajin\CategoriesController@tambah')->name('pengrajin.categories.tambah');
     Route::post('/pengrajin/categories/store','pengrajin\CategoriesController@store')->name('pengrajin.categories.store');
@@ -96,4 +98,18 @@ Route::group(['middleware' => ['auth','checkRole:pengrajin']], function () {
     Route::get('/pengrajin/product/edit/{id}','pengrajin\ProductController@edit')->name('pengrajin.product.edit');
     Route::get('/pengrajin/product/delete/{id}','pengrajin\ProductController@delete')->name('pengrajin.product.delete');
     Route::post('/pengrajin/product/update/{id}','pengrajin\ProductController@update')->name('pengrajin.product.update');
+
+    Route::get('/pengrajin/pesanan','pengrajin\PesananController@index')->name('pengrajin.pengrajin');
+    Route::get('/pengrajin/pesanan/perludicek','pengrajin\PesananController@perludicek')->name('pengrajin.pesanan.perludicek');
+    Route::get('/pengrajin/pesanan/perludikirim','pengrajin\PesananController@perludikirim')->name('pengrajin.pesanan.perludikirim');
+    Route::get('/pengrajin/pesanan/dikirim','pengrajin\PesananController@dikirim')->name('pengrajin.pesanan.dikirim');
+    Route::get('/pengrajin/pesanan/detail/{id}','pengrajin\PesananController@detail')->name('pengrajin.pesanan.detail');
+    Route::get('/pengrajin/pesanan/konfirmasi/{id}','pengrajin\PesananController@konfirmasi')->name('pengrajin.pesanan.konfirmasi');
+    Route::post('/pengrajin/pesanan/inputresi/{id}','pengrajin\PesananController@inputresi')->name('pengrajin.pesanan.inputresi');
+    Route::get('/pengrajin/pesanan/selesai','pengrajin\PesananController@selesai')->name('pengrajin.pesanan.selesai');
+    Route::get('/pengrajin/pesanan/dibatalkan','pengrajin\PesananController@dibatalkan')->name('pengrajin.pesanan.dibatalkan');
+});
+
+Route::group(['middleware' => ['auth:ketua', 'ceklevel:ketua']], function () {  
+    Route::get('/ketua','DashboardketuaController@index')->name('ketua.dashboardketua');
 });
